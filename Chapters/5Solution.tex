@@ -1,8 +1,97 @@
 %*****************************************
 \chapter{Ausführung der Lösung}\label{ch:solution}
 %*****************************************
-Dieses Kapitel kann auch in mehrere Kapitel aufgeteilt werden, wenn das sinnvoll ist!
 
-\section{Unterkapitel n}
+\section{Transkription}
 
-\subsection{Unterunterkapitel n}
+\subsection{Inhalt der Vorlesungen}
+
+Eine Vorlesung besteht in der Regel aus einer Doppelstunde von 90 Minuten.
+Hier wurden meistens gleich zwei Vorlesungen in Einheiten von etwa drei Stunden gehalten.
+So ergeben sich 12 Aufzeichnungen mit insgesamt 22 Vorlesungen und einer Gesamtlänge von 32:05 Stunden. 
+Der Inhalt dieser Vorlesungen richtet sich nach \citet{bb2}, siehe \cref{tab:vorlesungen}.
+
+\begin{table}
+\begin{tabulary}{\textwidth}{lLll}
+\toprule
+\textbf{Nr.} & \textbf{Kapitel} & \textbf{Datum} & \textbf{Länge}\\
+\midrule
+1 & 1. Introduction &  & \\
+\midrule
+2 & 2. Health Institutions and Information Processing &  & \\
+1--2 &  & 13.04.2021& 3:03:54\\
+\midrule
+3 & 3. Information System Basics & 15.04.2021 & 1:36:19 \\
+\midrule
+4 & 4. Health Information Systems &  & \\
+\midrule
+ & 5. Modeling HIS &  & \\
+5 & 5.1--5.2 &  & \\
+4--5 &  & 20.04.2021 & 2:40:33 \\
+%\midrule
+6--7 & 5.3--5.5 & 27.04.2021 & 2:56:34 \\
+\midrule
+ & 6. Architecture of HIS &  & \\
+8--9 & 6.1.--6.3. Functions, Data & 04.05.2021 & 3:00:36 \\
+%\midrule
+10--11 & 6.4. Application Components& 11.05.2021 & 2:39:46 \\
+%\midrule
+12--13 & 6.5. Integration & 18.05.2021 & 3:26:06 \\
+%\midrule
+14--15 & 6.5. Integration & 25.05.2021 & 1:48:54 \\ %Ende Fehlt, Für eine kurze Pause ausgeschaltetr, vergessen
+%\midrule
+16--17 & 6.6--6.7 Physical Tool Layer& 01.06.2021 & 3:11:34 \\
+\midrule
+18--19 & 7. Specific Aspects for Architectures of Transinstitutional HIS & 08.06.2021 & 3:17:44 \\
+\midrule
+20--21 & 8. Quality of HIS & 22.06.2021 & 2:50:15 \\
+\midrule
+22 & Ergenzung zu rechtlichen Anforderungen & 08.07.2021 & 1:32:45 \\
+\midrule
+& & & Gesamt: 32:05:00 \\
+\bottomrule
+\end{tabulary}
+\caption{Zuordnung der Kapitel des Buchs zu den Vorlesungen}
+\label{tab:vorlesungen}
+\end{table}
+
+\subsection{Transkriptionsmodell}
+
+
+
+Modell: Open AI Whisper \citep{whisper}
+(Whisper: Open Source, Große Trainingsdatenmenge 680k Stunden, auf gute zero shot performance abgezielt -> kein weiteres Trainig erforderlich)
+
+\subsubsection{Modell auf Website}
+
+- playground.deepgram.com
+
+Parameter
+- Smart Format: Verbesserte Formatierung mit Erkennung von Zeit- oder Datumsangaben und Zahlen
+- Punctuation: Satzzeichen
+- Paragraphs: Transkript wird in Absätze unterteilt
+- Diarization: Es wird zwischen verschiedenen Sprechenden unterschieden
+Für Diarization kann Audio nicht gesplittet werden -> Einzelne Audiodatein mussten zu einer verbunden werden (ffmpeg)
+
+Bei einzelnen Vorlesungen: Funktioniert grundsätzlich, Diarization inkonsistent, Genauer Vorgang unklar (Blackbox)
+
+Programm hat für 10 min geladen, dann Abgestürzt aufgrund eines Netzwerkfehlers.
+-> Lokale Whisper Anwendung bevorzugt
+
+%https://platform.openai.com/docs/guides/speech-to-text
+%https://openai.com/index/whisper/ 
+%https://cdn.openai.com/papers/whisper.pdf
+
+\subsubsection{API in eigenem Programm}
+
+Whisper API in Python 
+Problem: Immer nur 25MB gleichzeitig, output.opus  = 655 MB; keine Diarization 
+Lösung: Datei in Abschnitte gliedern (OpenAIs Guide folgend)
+Vorteil: Mehr Kontrolle durch Eingabe von Kontext
+
+Sehr geringes limit mit der API (bei 30s testaudio schon überschritten)
+Fehler: openai.RateLimitError: Error code: 429
+
+\subsubsection{Modell vollständig lokal}
+Canary  ->
+

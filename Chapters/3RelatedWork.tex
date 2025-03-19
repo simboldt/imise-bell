@@ -15,3 +15,30 @@ Im \href{https://home.uni-leipzig.de/schreibportal/}{Onlineportal zum Wissenscha
 \citet{sniktec} beschreiben ein Verfahren zur X von Y auf Basis von Z.
 Alternativ: X von Y lässt sich auf Basis von Z ermitteln~\citep{sniktec}.
 
+\section{Transkriptionsmodelle}
+
+\subsection{Whisper}
+\citet{VergleichASR2023}
+Vergleich vieler ASR Modelle anhand Deutsch- und Englischsprachiger Youtubevideo Ausschnitte: OpenAI Whisper in allen Kategorien niedrigste WER, vor allem in Deutscher Sprache mit 5.0 bei einem Durchschnitt von 15.3 (Platz 2: Speechmatics 8.0, Platz 3: Microsoft 10.1), allerdings am Langsamsten
+Wird dennoch von neueren Modellen übertroffen
+
+\subsection{Nvidia Canary}
+\citet{canary}
+
+\begin{table}
+\begin{tabulary}{\textwidth}{lLll}
+\toprule
+\textbf{Modell} & \textbf{Parameter} & \textbf{WER (De)} & \textbf{Training}\\
+Whisper-large v3 & 1,55b & 9,5 & 680k hours\\
+Canary & 1b & 6,4 & 86k hours\\
+\bottomrule
+\end{tabulary}
+\caption{Vergleich von Canary 1b und Whisper}
+\label{tab:Canary vs Whisper}
+\end{table}
+
+\subsection{Samba}
+\citet{samba}
+Vielversprechend aber kein Deutsch
+
+\subsection{Moonshine}

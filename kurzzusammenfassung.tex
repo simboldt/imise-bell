@@ -3,14 +3,27 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{lipsum} % Für Beispieltext, kann entfernt werden zusammen mit dem lipsum-Kommando.
+%\usepackage{lipsum} % Für Beispieltext, kann entfernt werden zusammen mit dem lipsum-Kommando.
 \usepackage{setspace}
-
+\usepackage{csquotes}
+\usepackage[ngerman]{babel}
 \begin{document}
+\thispagestyle{empty}
 \onehalfspacing
-\section*{Kurzzusammenfassung}
-% halbe Seite bis dreiviertel Seite
-% kurzer Überblick in verständlicher Sprache
+\section*{Transkription von Vorlesungsaufnahmen für Question Answering mittels großer generativer Sprachmodelle}
 
-\lipsum[1-2] % Beispieltext, löschen und durch eigenen Text ersetzen
+Während der Corona-Pandemie wurden die meisten Vorlesungen der Universität Leipzig online gehalten. 
+Bild- und Tonaufnahmen dieser Vorlesungen stehen auch heute noch zur Verfügung, sind allerdings schlecht zugänglich. 
+Zum einen kann man sie nicht gezielt nach Inhalten durchsuchen und zum anderen ist die Veröffentlichung der Aufnahmen datenschutzrechtlich schwierig, da personenbezogene Daten über Studierende enthalten sind.\\ 
+Ein Ansatz dieses Wissen verfügbar zu machen, bei dem diese Kriterien erfüllt werden, ist die automatisierte Fragebeantwortung mittels Künstlicher Intelligenz.
+Dafür werden Aufnahmen des Sommersemesters 2021 aus dem Modul \enquote{Architektur von Informationssystemen im Gesundheitswesen} am Institut für Medizinische Informatik, Statistik und Epidemiologie (IMISE) verwendet. 
+Als Basis wird ein anonymisiertes Transkript der fachlichen Inhalte verwendet. 
+Dieses wird mit einem Transkriptionsmodell aus den Tonaufnahmen geschrieben und danach anonymisiert und von unwichtigen Inhalten gesäubert.
+Ein weiteres Sprachmodell nutzt diese Daten um spezifisches Wissen wiederzugeben.
+Studierende der Medizinischen Informatik können dadurch ihre Fragen schnell und eigenständig beantworten.
+Dieser Vorgang soll auch für Vorlesungsaufnahmen anderer Forschungsbereiche wiederholt werden.\\\\
+Simon Boldt
+
+
+%\lipsum[1-2] % Beispieltext, löschen und durch eigenen Text ersetzen
 \end{document}
