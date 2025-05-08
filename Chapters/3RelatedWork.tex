@@ -2,25 +2,62 @@
 \chapter{Stand der Forschung}\label{ch:relatedWork}
 %*****************************************
 
-Kann auch im Grundlagenkapitel mit integriert werden! Wenn es zwei Kapitel sind, ist das Grundlagenkapitel für bekanntes \enquote{Lehrbuchwissen} gedacht, der \enquote{Stand der Forschung} für Vorarbeiten in Publikationen.
+%Kann auch im Grundlagenkapitel mit integriert werden! Wenn es zwei Kapitel sind, ist das Grundlagenkapitel für bekanntes \enquote{Lehrbuchwissen} gedacht, der \enquote{Stand der Forschung} für Vorarbeiten in Publikationen.
 
-Grundlage für eine Abschlussarbeit ist eine gründliche Recherche im Themenumfeld.
-Dabei ist es ausdrücklich nicht hinreichend, mit bekannten Suchmaschinen im Internet zu recherchieren.
-Vielmehr wird von den Studierenden erwartet, dass sie auch referierte Veröffentlichungen (wissenschaftliche Zeitschriften (auch elektronisch), Bücher) in die Erarbeitung einbeziehen (und mit entsprechenden Quellenangaben belegen).
-Informationen zum Thema der Literaturrecherche finden sich in den \href{http://www.imise.uni-leipzig.de/Lehre/MedInf/Abschlussarbeiten/Literaturrecherche}{Hinweisen zur Literaturrecherche}.
-Wir empfehlen Ihnen, Kurse zur Literaturrecherche zu belegen, z.B. beim \href{https://home.uni-leipzig.de/academiclab/}{Academic Lab} oder der \href{https://www.ub.uni-leipzig.de/service/workshops-und-online-tutorials/}{Universitätsbibliothek}.
-Im \href{https://home.uni-leipzig.de/schreibportal/}{Onlineportal zum Wissenschaftlichen Schreiben der Uni Leipzig} finden Sie wertvolle Hinweise und Übungen zu Textstruktur, Stilistik, Schreibprozess sowie Quellen und Zitaten.
+%Grundlage für eine Abschlussarbeit ist eine gründliche Recherche im Themenumfeld.
+%Dabei ist es ausdrücklich nicht hinreichend, mit bekannten Suchmaschinen im Internet zu recherchieren.
+%Vielmehr wird von den Studierenden erwartet, dass sie auch referierte Veröffentlichungen (wissenschaftliche Zeitschriften (auch elektronisch), Bücher) in die Erarbeitung einbeziehen (und mit entsprechenden Quellenangaben belegen).
+%Informationen zum Thema der Literaturrecherche finden sich in den \href{http://www.imise.uni-leipzig.de/Lehre/MedInf/Abschlussarbeiten/Literaturrecherche}{Hinweisen zur Literaturrecherche}.
+%Wir empfehlen Ihnen, Kurse zur Literaturrecherche zu belegen, z.B. beim \href{https://home.uni-leipzig.de/academiclab/}{Academic Lab} oder der \href{https://www.ub.uni-leipzig.de/service/workshops-und-online-tutorials/}{Universitätsbibliothek}.
+%Im \href{https://home.uni-leipzig.de/schreibportal/}{Onlineportal zum Wissenschaftlichen Schreiben der Uni Leipzig} finden Sie wertvolle Hinweise und Übungen zu Textstruktur, Stilistik, Schreibprozess sowie Quellen und Zitaten.
 
-\paragraph{Beispielzitierungen}
-\citet{sniktec} beschreiben ein Verfahren zur X von Y auf Basis von Z.
-Alternativ: X von Y lässt sich auf Basis von Z ermitteln~\citep{sniktec}.
+%\paragraph{Beispielzitierungen}
+%\citet{sniktec} beschreiben ein Verfahren zur X von Y auf Basis von Z.
+%Alternativ: X von Y lässt sich auf Basis von Z ermitteln~\citep{sniktec}.
 
 \section{Transkriptionsmodelle}
+\subsection{Bewertung von Transkriptionsmodellen}
+Der gängigste Methode zur Bewertung der Qualität von Transkriptionsmodellen ist die \ac{wer}~\citep{wer}.
+Diese gibt an, wie viele Prozent der Worte N verglichen mit einem korrekten Transkript fehlerhaft sind.
+Fehler sind dabei zusätzliche Wörter I (insertion), fehlende Wörter D (deletion) und ausgetauschte Wörter S (substitution):
+\[\textnormal{WER} = \frac{I + D + S}{N} \times 100\]
+Die \ac{wer} ist somit ein Maß für die Ungenauigkeit einer Transkription, wobei eine niedrigere \ac{wer} eine hohe Genauigkeit angibt.
+Um sie zu möglichst genau zu ermitteln, müssen lange Audiodateien verwendetet werden.
+Die Performance eines Transkriptionsmodells ist stark Abhängig von der verwendeten Audio und den, weshalb sich \acp{wer} aus Verschiedenen Tests oft nicht vergleichen lassen.
+
 
 \subsection{Whisper}
+Es existieren verschiedene Whisper Modelle (\cref{tab:whisper_modelle})
+Das größte dieser Modelle, Whisper large, gibt es in drei Versionen.
+Whisper large, Whisper large-v2, Whisper large-v3.
+Whisper turbo ist eine optimierte Version von Whisper large-v3.
+Die Modelle werden mit zunehmender Größe genauer, aber auch langsamer.
+Whisper Turbo ist dabei eine Ausnahme, weil es ähnlich genau wie Whisper large-v2 und gleichzeitg fast so schnell wie Whisper tiny ist.
+
+\begin{table}
+\begin{tabulary}{\textwidth}{llll}
+\toprule
+\textbf{Modell} & \textbf{Parameter}
+Tiny & 39M\\
+Base & 74M\\
+Small & 244M\\
+Medium & 769M\\
+Large & 1550M\\
+Turbo & 809M\\
+\bottomrule
+\end{tabulary}
+\caption{Whisper Modelle}
+\label{tab:whisper_modelle}
+\end{table}
+
+
+
+ %Noch kein Paper dazu, Nicht zitierfähige Quellen dazu: https://huggingface.co/openai/whisper-large-v3-turbo, https://github.com/openai/whisper?tab=readme-ov-file, https://github.com/openai/whisper/discussions/2363
+
 \citet{VergleichASR2023}
-Vergleich vieler ASR Modelle anhand Deutsch- und Englischsprachiger Youtubevideo Ausschnitte: OpenAI Whisper in allen Kategorien niedrigste WER, vor allem in Deutscher Sprache mit 5.0 bei einem Durchschnitt von 15.3 (Platz 2: Speechmatics 8.0, Platz 3: Microsoft 10.1), allerdings am Langsamsten
-Wird dennoch von neueren Modellen übertroffen
+Vergleich vieler ASR Modelle anhand Deutsch- und Englischsprachiger Youtubevideo Ausschnitte: OpenAI Whisper in allen Kategorien niedrigste \ac{wer}, vor allem in Deutscher Sprache mit 5.0 bei einem Durchschnitt von 15.3 (Platz 2: Speechmatics 8.0, Platz 3: Microsoft 10.1), allerdings am Langsamsten
+
+
 
 \subsection{Nvidia Canary}
 \citet{canary}
@@ -37,8 +74,7 @@ Canary & 1b & 6,4 & 86k hours\\
 \label{tab:Canary vs Whisper}
 \end{table}
 
-\subsection{Samba}
-\citet{samba}
-Vielversprechend aber kein Deutsch
-
 \subsection{Moonshine}
+
+
+\section{Nvidia CUDA}
