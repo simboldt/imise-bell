@@ -8,6 +8,7 @@
 \section{Transkription}
 
 
+
 %Das Grundlagenkapitel soll den Stand der Forschung erläutern und mit Literatur belegen.
 %Auf diesem Kapitel bauen die Erkenntnisse der Arbeit auf.
 %Gerade in den Grundlagen wird man häufig Quellen benennen, aus denen die Aussagen letztlich stammen.
@@ -33,6 +34,15 @@
 \section{Neuronale Netze}
 \subsection{Sprachmodelle}
 \subsubsection{Transformers}
+\subsubsection{Bewertung von Transkriptionsmodellen}
+Der gängigste Methode zur Bewertung der Qualität von Transkriptionsmodellen ist die \ac{wer}~\citep{wer}.
+Diese gibt an, wie viele Prozent der Wörter N verglichen mit einem korrekten Transkript fehlerhaft sind.
+Fehler sind dabei zusätzliche Wörter I (insertion), fehlende Wörter D (deletion) und ausgetauschte Wörter S (substitution):
+\[\textnormal{WER} = \frac{I + D + S}{N} \times 100\]
+Die \ac{wer} ist somit ein Maß für die Ungenauigkeit einer Transkription, wobei eine niedrigere \ac{wer} eine hohe Genauigkeit angibt.
+Um sie zu möglichst genau zu ermitteln, müssen lange Audiodateien verwendet werden.
+Die Performance eines Transkriptionsmodells ist stark abhängig von der verwendeten Audio und den verwendeten Gräten, weshalb sich \acp{wer} aus verschiedenen Tests oft nicht vergleichen lassen.
+
 \subsection{Quantisierung}
 
 \section{Automatische Spracherkennung}

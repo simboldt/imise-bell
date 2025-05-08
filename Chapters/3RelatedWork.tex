@@ -16,48 +16,37 @@
 %Alternativ: X von Y lässt sich auf Basis von Z ermitteln~\citep{sniktec}.
 
 \section{Transkriptionsmodelle}
-\subsection{Bewertung von Transkriptionsmodellen}
-Der gängigste Methode zur Bewertung der Qualität von Transkriptionsmodellen ist die \ac{wer}~\citep{wer}.
-Diese gibt an, wie viele Prozent der Worte N verglichen mit einem korrekten Transkript fehlerhaft sind.
-Fehler sind dabei zusätzliche Wörter I (insertion), fehlende Wörter D (deletion) und ausgetauschte Wörter S (substitution):
-\[\textnormal{WER} = \frac{I + D + S}{N} \times 100\]
-Die \ac{wer} ist somit ein Maß für die Ungenauigkeit einer Transkription, wobei eine niedrigere \ac{wer} eine hohe Genauigkeit angibt.
-Um sie zu möglichst genau zu ermitteln, müssen lange Audiodateien verwendetet werden.
-Die Performance eines Transkriptionsmodells ist stark Abhängig von der verwendeten Audio und den, weshalb sich \acp{wer} aus Verschiedenen Tests oft nicht vergleichen lassen.
 
 
 \subsection{Whisper}
-Es existieren verschiedene Whisper Modelle (\cref{tab:whisper_modelle})
+%hier noch erklährung was das kann, wofür, von wem,    zero shot performance
+Vergleich vieler ASR Modelle anhand deutsch- und englischsprachiger Youtubevideo Ausschnitte: OpenAI Whisper in allen Kategorien niedrigste \ac{wer}, vor allem in deutscher Sprache mit 5.0 bei einem Durchschnitt von 15.3 (Platz 2: Speechmatics 8.0, Platz 3: Microsoft 10.1), allerdings am langsamsten \citet{VergleichASR2023}
+
+\subsubsection{Whisper-Modelle}
+Es existieren verschiedene Whisper-Modelle (\cref{tab:whisper_modelle})
 Das größte dieser Modelle, Whisper large, gibt es in drei Versionen.
 Whisper large, Whisper large-v2, Whisper large-v3.
 Whisper turbo ist eine optimierte Version von Whisper large-v3.
 Die Modelle werden mit zunehmender Größe genauer, aber auch langsamer.
-Whisper Turbo ist dabei eine Ausnahme, weil es ähnlich genau wie Whisper large-v2 und gleichzeitg fast so schnell wie Whisper tiny ist.
+Whisper Turbo ist dabei eine Ausnahme, weil es ähnlich genau wie Whisper large-v2 und gleichzeitig fast so schnell wie Whisper tiny ist.
 
 \begin{table}
-\begin{tabulary}{\textwidth}{llll}
+\begin{tabulary}{\textwidth}{lS}
 \toprule
-\textbf{Modell} & \textbf{Parameter}
-Tiny & 39M\\
-Base & 74M\\
-Small & 244M\\
-Medium & 769M\\
-Large & 1550M\\
-Turbo & 809M\\
+\textbf{Modell} & \textbf{Parameter}\\
+Tiny & \qty{39}{\mega\nounit}\\
+Base & \qty{74}{\mega\nounit}\\
+Small & \qty{244}{\mega\nounit}\\
+Medium & \qty{769}{\mega\nounit}\\
+Large & \qty{1550}{\mega\nounit}\\
+Turbo & \qty{809}{\mega\nounit}\\
 \bottomrule
 \end{tabulary}
-\caption{Whisper Modelle}
+\caption{Whisper-Modelle}
 \label{tab:whisper_modelle}
 \end{table}
 
-
-
  %Noch kein Paper dazu, Nicht zitierfähige Quellen dazu: https://huggingface.co/openai/whisper-large-v3-turbo, https://github.com/openai/whisper?tab=readme-ov-file, https://github.com/openai/whisper/discussions/2363
-
-\citet{VergleichASR2023}
-Vergleich vieler ASR Modelle anhand Deutsch- und Englischsprachiger Youtubevideo Ausschnitte: OpenAI Whisper in allen Kategorien niedrigste \ac{wer}, vor allem in Deutscher Sprache mit 5.0 bei einem Durchschnitt von 15.3 (Platz 2: Speechmatics 8.0, Platz 3: Microsoft 10.1), allerdings am Langsamsten
-
-
 
 \subsection{Nvidia Canary}
 \citet{canary}
