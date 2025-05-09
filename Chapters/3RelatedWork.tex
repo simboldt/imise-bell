@@ -17,10 +17,12 @@
 
 \section{Transkriptionsmodelle}
 
-
 \subsection{Whisper}
-%hier noch erklährung was das kann, wofür, von wem,    zero shot performance
-Vergleich vieler ASR Modelle anhand deutsch- und englischsprachiger Youtubevideo Ausschnitte: OpenAI Whisper in allen Kategorien niedrigste \ac{wer}, vor allem in deutscher Sprache mit 5.0 bei einem Durchschnitt von 15.3 (Platz 2: Speechmatics 8.0, Platz 3: Microsoft 10.1), allerdings am langsamsten \citet{VergleichASR2023}
+Whisper ist ein Open-Source-Transkriptionsmodell von OpenAI, welches mit 680k Stunden an Audio in verschieden Sprachen aus dem Internet trainiert wurde.
+Aufgrund der weitreichenden Diversität der Trainingsdaten erreicht Whisper auch bei Akzenten und Fachsprache  hohe Genauigkeit \citep{whisper}.
+Durch den großen Umfang des Trainings erreicht Whisper eine gute zero-shot-Performance, kommt also gut mit Daten zurecht, auf die es nicht spezifisch trainiert wurde.
+
+%Vergleich vieler ASR Modelle anhand deutsch- und englischsprachiger Youtubevideo Ausschnitte: OpenAI Whisper in allen Kategorien niedrigste \ac{wer}, vor allem in deutscher Sprache mit 5.0 bei einem Durchschnitt von 15.3 (Platz 2: Speechmatics 8.0, Platz 3: Microsoft 10.1), allerdings am langsamsten \citet{VergleichASR2023}
 
 \subsubsection{Whisper-Modelle}
 Es existieren verschiedene Whisper-Modelle (\cref{tab:whisper_modelle})
@@ -28,7 +30,7 @@ Das größte dieser Modelle, Whisper large, gibt es in drei Versionen.
 Whisper large, Whisper large-v2, Whisper large-v3.
 Whisper turbo ist eine optimierte Version von Whisper large-v3.
 Die Modelle werden mit zunehmender Größe genauer, aber auch langsamer.
-Whisper Turbo ist dabei eine Ausnahme, weil es ähnlich genau wie Whisper large-v2 und gleichzeitig fast so schnell wie Whisper tiny ist.
+Whisper Turbo ist dabei eine Ausnahme, weil es ähnlich genau wie Whisper large-v2 und gleichzeitig fast so schnell wie Whisper tiny ist. \cite{distilwhisper}
 
 \begin{table}
 \begin{tabulary}{\textwidth}{lS}
@@ -46,24 +48,22 @@ Turbo & \qty{809}{\mega\nounit}\\
 \label{tab:whisper_modelle}
 \end{table}
 
- %Noch kein Paper dazu, Nicht zitierfähige Quellen dazu: https://huggingface.co/openai/whisper-large-v3-turbo, https://github.com/openai/whisper?tab=readme-ov-file, https://github.com/openai/whisper/discussions/2363
-
-\subsection{Nvidia Canary}
-\citet{canary}
-
-\begin{table}
-\begin{tabulary}{\textwidth}{lLll}
-\toprule
-\textbf{Modell} & \textbf{Parameter} & \textbf{WER (De)} & \textbf{Training}\\
-Whisper-large v3 & 1,55b & 9,5 & 680k hours\\
-Canary & 1b & 6,4 & 86k hours\\
-\bottomrule
-\end{tabulary}
-\caption{Vergleich von Canary 1b und Whisper}
-\label{tab:Canary vs Whisper}
-\end{table}
-
-\subsection{Moonshine}
+%\subsection{Nvidia Canary}
+%\citet{canary}
+%
+%\begin{table}
+%\begin{tabulary}{\textwidth}{lLll}
+%\toprule
+%\textbf{Modell} & \textbf{Parameter} & \textbf{WER (De)} & \textbf{Training}\\
+%Whisper-large v3 & 1,55b & 9,5 & 680k hours\\
+%Canary & 1b & 6,4 & 86k hours\\
+%\bottomrule
+%\end{tabulary}
+%\caption{Vergleich von Canary 1b und Whisper}
+%\label{tab:Canary vs Whisper}
+%\end{table}
+%
+%\subsection{Moonshine}
 
 
 \section{Nvidia CUDA}
