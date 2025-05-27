@@ -26,7 +26,7 @@
 %Wenn Sie feststellen, dass gelehrte Methoden ungeeignet sind, diskutieren Sie dies und suchen passendere Methoden! Wenn Sie Methoden benötigen, die nicht gelehrt wurden, suchen Sie nach passenden Methoden oder -- wenn Sie nicht fündig werden -- entwickeln Sie die für Ihr Problem passende Methode selbst!
 
 %\begin{definition}[Beispieldefinition]
-%Dies ist eine Beispieldefinition.
+%Dies ist eine Beispieldefinition. 
 %\end{definition}
 
 \section{Question Answering}
@@ -37,7 +37,7 @@
 Neuronale Netze basieren auf der Funktionsweise biologischer Nervenzellen und werden verwendet um verschiedene komplexe Aufgaben zu lösen.
 Sie bestehen aus vielen künstlichen Neuronen in verschiedenen Schichten.
 Es gibt eine Eingabeschicht eine Ausgabeschicht und dazwischen beliebig viele versteckte Schichten.
-Zwischen den Neuronen gibt es gewichtete Verbindungen (Abb 1 noch einfügen)
+Zwischen den Neuronen gibt es gewichtete Verbindungen (Abb noch einfügen)
 Den Neuronen der Eingabeschicht wird durch die Eingabe ein Wert zugewiesen.
 Die Werte der weiteren Neuronen werden aus denen der vorherigen Schicht berechnet.
 Dafür werden diese jeweils mit dem Gewicht der Verbindung zwischen den Neuronen Multipliziert und dann addiert.
@@ -45,37 +45,41 @@ Es kann auch ein Bias (beliebiger fester Wert) addiert werden.
 Das Ergebnis dieser Rechnung wird durch eine weitere Funktion bearbeitet.
 Die werte der Neuronen in der Ausgabeschicht bilden die Ausgabe des neuronalen Netzes.
 
-
-
-\subsection{Trainig von neuronalen Netzen}#
-Die Gewichte der Verbindungen und der Bias bilden die Parameter des neuronalen Netzes.
-
-
-\subsection{Quantisierung}
+\subsection{Training von neuronalen Netzen}
+Die Gewichte der Verbindungen und der Bias bilden die Parameter des neuronalen Netzes und bestimmen dessen Funktion.
+Beim Training werden Datenpaare aus Eingabe und korrekter dazugehöriger Ausgabe mit den Ausgaben des neuronalen Netzwerks verglichen.
+Die Parameter werden daraufhin angepasst um die Ausgabe der gewünschten Ausgabe näher zu bringen.
+Wenn dieser Vorgang mit großen Mengen von Daten immer wider durchgeführt wird, werden die Ausgaben dadurch immer genauer.
 
 \section{Sprachmodelle}
+
+\subsection{Quantisierung}
+Quantisierung im kontext von Sprachmodellen ist ein Prozess, bei dem die Genauigkeit der Gewichte verringert wird.
+Beispielsweise werden 32bit Fließkommazahlen auf einen 8 bit Bereich reduziert und gerundet.
+Dadurch nimmt Präzision des Sprachmodells ab, allerdings wird weniger Rechenleistung benötigt und die Berechnungen laufen schneller.
+
 \subsection{Transformers}
 \subsection{Bewertung von Transkriptionsmodellen}
-Der gängigste Methode zur Bewertung der Qualität von Transkriptionsmodellen ist die \ac{wer}~\citep{wer}.
+Die gängigste Methode zur Bewertung der Qualität von Transkriptionsmodellen ist die \ac{wer}~\citep{wer}.
 Diese gibt an, wie viele Prozent der Wörter N verglichen mit einem korrekten Transkript fehlerhaft sind.
-Fehler sind dabei zusätzliche Wörter I (insertion), fehlende Wörter D (deletion) und ausgetauschte Wörter S (substitution):
+Fehler sind dabei zusätzliche Wörter I (\textit{insertion}), fehlende Wörter D (\textit{deletion}) und ausgetauschte Wörter S (\textit{substitution}):
 \[\textnormal{WER} = \frac{I + D + S}{N} \times 100\]
 Die \ac{wer} ist somit ein Maß für die Ungenauigkeit einer Transkription, wobei eine niedrigere \ac{wer} eine hohe Genauigkeit angibt.
 Um sie möglichst genau zu ermitteln, müssen lange Audioeingaben verwendet werden.
-Die Performance eines Transkriptionsmodells ist stark abhängig von der verwendeten Audio und den verwendeten Gräten, weshalb sich \acp{wer} aus verschiedenen Tests oft nicht vergleichen lassen.
+Die Performance eines Transkriptionsmodells ist stark abhängig von der verwendeten Audiodatei und den verwendeten Gräten, weshalb sich \acp{wer} aus verschiedenen Tests oft nicht vergleichen lassen.
 
 \section{Pseudonymisierung und Anonymisierung}
 Pseudonymisierung und Anonymisierung werden genutzt um wenn personenbezogene Informationen niemandem Zugeordnet werden sollen.
 Es sind Wege solche Daten von Personen zu trennen um diese nicht zu belasten.
 
 \begin{definition}[Pseudonymisierung]
-D E F I N I T I O N
+Bei der Pseudonymisierung wird der Name einer Person durch einen anderen Namen ersetzt.
 %Bei Pseudonymisierung werden Name von Personen durch andere Namen ersetzt.
 %Diese Namen werden dann ganz normal Verwendet.
 %Pseudonymisierung ist sinnvoll, wenn man zwischen Personen unterscheiden können muss ohne diese mit ihrem echten Namen zu nennen.
 \end{definition}
 
 \begin{definition}[Anonymisierung]
-D E F I N I T I O N
+Bei der Anonymisierung wird ein Name entfernt und stattdessen eine Bezeichnung, wie "Schüler 1", verwendet die man der Person nicht zuordnen kann.
 %Bei Anonymisierung werden Namen von Personen entfernt. Bspw. wird dann "Max Mustermann" zu "Schüler"
 \end{definition}

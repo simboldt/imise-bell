@@ -12,15 +12,15 @@
 %Im \href{https://home.uni-leipzig.de/schreibportal/}{Onlineportal zum Wissenschaftlichen Schreiben der Uni Leipzig} finden Sie wertvolle Hinweise und Übungen zu Textstruktur, Stilistik, Schreibprozess sowie Quellen und Zitaten.
 
 %\paragraph{Beispielzitierungen}
-%\citet{sniktec} beschreiben ein Verfahren zur X von Y auf Basis von Z.
+%\citet{sniktec} beschreiben ein Verfahren zur X von Y auf Basis von Z."
 %Alternativ: X von Y lässt sich auf Basis von Z ermitteln~\citep{sniktec}.
 
 \section{Transkriptionsmodelle}
 
 \subsection{Whisper}
-Whisper ist ein Open-Source-Transkriptionsmodell von OpenAI, welches mit 680k Stunden an Audio in verschieden Sprachen aus dem Internet trainiert wurde.
+Whisper ist ein Open-Source-Transkriptionsmodell von OpenAI, welches mit 680.000 Stunden an Audio in verschieden Sprachen aus dem Internet trainiert wurde.
 Aufgrund der weitreichenden Diversität der Trainingsdaten erreicht Whisper auch bei Akzenten und Fachsprache  hohe Genauigkeit \citep{whisper}.
-Durch den großen Umfang des Trainings erreicht Whisper eine gute zero-shot-Performance, kommt also gut mit Daten zurecht, auf die es nicht spezifisch trainiert wurde.
+Durch den großen Umfang des Trainings erreicht Whisper eine gute Zero-Shot-Performance, kommt also gut mit Daten zurecht, auf die es nicht spezifisch trainiert wurde.
 
 %Vergleich vieler ASR Modelle anhand deutsch- und englischsprachiger Youtubevideo Ausschnitte: OpenAI Whisper in allen Kategorien niedrigste \ac{wer}, vor allem in deutscher Sprache mit 5.0 bei einem Durchschnitt von 15.3 (Platz 2: Speechmatics 8.0, Platz 3: Microsoft 10.1), allerdings am langsamsten \citet{VergleichASR2023}
 
@@ -28,7 +28,7 @@ Durch den großen Umfang des Trainings erreicht Whisper eine gute zero-shot-Perf
 Es existieren verschiedene Whisper-Modelle (\cref{tab:whisper_modelle})
 Das größte dieser Modelle, Whisper large, gibt es in drei Versionen.
 Whisper large, Whisper large-v2, Whisper large-v3.
-Whisper turbo ist eine optimierte Version von Whisper large-v3.
+Whisper turbo ist eine 8bit quantisierte Version von Whisper large-v3.
 Die Modelle werden mit zunehmender Größe genauer, aber auch langsamer.
 Whisper Turbo ist dabei eine Ausnahme, weil es ähnlich genau wie Whisper large-v2 und gleichzeitig fast so schnell wie Whisper tiny ist. \cite{distilwhisper}
 

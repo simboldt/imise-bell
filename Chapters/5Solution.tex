@@ -60,47 +60,48 @@ Im Transkript 167k Wörter
 \subsection{Transkriptionsmodell}
 
 
-Modell: Open AI Whisper \citep{whisper}
-(Whisper: Open Source, Große Trainingsdatenmenge 680k Stunden, auf gute zero shot performance abgezielt -> kein weiteres Trainig erforderlich)
+%Modell: Open AI Whisper \citep{whisper}
+%(Whisper: Open Source, Große Trainingsdatenmenge 680k Stunden, auf gute zero shot performance abgezielt -> kein weiteres Trainig erforderlich)
 
-\subsubsection{Modell auf Website}
+%\subsubsection{Modell auf Website}
 
-- playground.deepgram.com
+%- playground.deepgram.com
 
-Parameter
-- Smart Format: Verbesserte Formatierung mit Erkennung von Zeit- oder Datumsangaben und Zahlen
-- Punctuation: Satzzeichen
-- Paragraphs: Transkript wird in Absätze unterteilt
-- Diarization: Es wird zwischen verschiedenen Sprechenden unterschieden
-Für Diarization kann Audio nicht gesplittet werden -> Einzelne Audiodatein mussten zu einer verbunden werden (ffmpeg)
+%Parameter
+%- Smart Format: Verbesserte Formatierung mit Erkennung von Zeit- oder Datumsangaben und Zahlen
+%- Punctuation: Satzzeichen
+%- Paragraphs: Transkript wird in Absätze unterteilt
+%- Diarization: Es wird zwischen verschiedenen Sprechenden unterschieden
+%Für Diarization kann Audio nicht gesplittet werden -> Einzelne Audiodatein mussten zu einer verbunden werden (ffmpeg)
 
-Bei einzelnen Vorlesungen: Funktioniert grundsätzlich, Diarization inkonsistent, Genauer Vorgang unklar (Blackbox)
+%Bei einzelnen Vorlesungen: Funktioniert grundsätzlich, Diarization inkonsistent, Genauer Vorgang unklar (Blackbox)
 
-Programm hat für 10 min geladen, dann Abgestürzt aufgrund eines Netzwerkfehlers.
--> Lokale Whisper Anwendung bevorzugt
+%Programm hat für 10 min geladen, dann Abgestürzt aufgrund eines Netzwerkfehlers.
+%-> Lokale Whisper Anwendung bevorzugt
 
 %https://platform.openai.com/docs/guides/speech-to-text
 %https://openai.com/index/whisper/ 
 %https://cdn.openai.com/papers/whisper.pdf
 
-\subsubsection{API in eigenem Programm}
+%\subsubsection{API in eigenem Programm}
 
-Whisper API in Python 
-Problem: Immer nur 25MB gleichzeitig, output.opus  = 655 MB; keine Diarization 
-Lösung: Datei in Abschnitte gliedern (OpenAIs Guide folgend)
-Vorteil: Mehr Kontrolle durch Eingabe von Kontext
+%Whisper API in Python 
+%Problem: Immer nur 25MB gleichzeitig, output.opus  = 655 MB; keine Diarization 
+%Lösung: Datei in Abschnitte gliedern (OpenAIs Guide folgend)
+%Vorteil: Mehr Kontrolle durch Eingabe von Kontext
 
-Sehr geringes limit mit der API (bei 30s testaudio schon überschritten)
-Fehler: openai.RateLimitError: Error code: 429
+%Sehr geringes limit mit der API (bei 30s testaudio schon überschritten)
+%Fehler: openai.RateLimitError: Error code: 429
 
-\subsubsection{Modell volls
-tändig lokal}
-Canary  ->
+%\subsubsection{Modell volls
+%tändig lokal}
+%Canary  ->
 
 
 
 \section{Korrektur}
 \subsection{Fehler}
+Es versch 
 FHIR als FIRE
 Physical Tool Layer als Physik-Kultur-Lehrer oder Physikaturlehrer
 HL7 als HAL7
