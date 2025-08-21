@@ -7,6 +7,8 @@
 
 \section{Transkription}
 
+Die Methode der Transkription beschreibt \enquote{Die Verschriftlichung menschlicher Kommunikation, meist auf der Grundlage von Tonband- oder anderen Aufzeichnungen} \citep{transkription}.
+
 
 
 %Das Grundlagenkapitel soll den Stand der Forschung erläutern und mit Literatur belegen.
@@ -37,7 +39,7 @@
 Neuronale Netze basieren auf der Funktionsweise biologischer Nervenzellen und werden verwendet um verschiedene komplexe Aufgaben zu lösen.
 Sie bestehen aus vielen künstlichen Neuronen in verschiedenen Schichten.
 Es gibt eine Eingabeschicht, eine Ausgabeschicht und dazwischen beliebig viele versteckte Schichten.
-Zwischen den Neuronen gibt es gewichtete Verbindungen (Abb noch einfügen)
+Zwischen den Neuronen gibt es gewichtete Verbindungen (Abb. noch einfügen).
 Den Neuronen der Eingabeschicht wird durch die Eingabe ein Wert zugewiesen.
 Die Werte der weiteren Neuronen werden aus denen der vorherigen Schicht berechnet.
 Dafür werden diese jeweils mit dem Gewicht der Verbindung zwischen den Neuronen multipliziert und dann addiert.
@@ -48,14 +50,17 @@ Die Werte der Neuronen in der Ausgabeschicht bilden die Ausgabe des neuronalen N
 \subsection{Training von neuronalen Netzen}
 Die Gewichte der Verbindungen und der Bias bilden die Parameter des neuronalen Netzes und bestimmen dessen Funktion.
 Beim Training werden Datenpaare aus Eingabe und korrekter dazugehöriger Ausgabe mit den Ausgaben des neuronalen Netzwerks verglichen.
-Die Parameter werden daraufhin angepasst um die Ausgabe der gewünschten Ausgabe näher zu bringen.
-Wenn dieser Vorgang mit großen Mengen von Daten immer wieder durchgeführt wird, werden die Ausgaben dadurch immer genauer.
+Daraus wird ein Fehlerwert berechnet.
+Die Parameter werden daraufhin so angepasst, dass sich dieser Fehlerwert verringert.
+Wenn dieser Vorgang mit großen Mengen von Daten immer wieder durchgeführt wird, werden die Ausgaben auch für unbekannte Daten immer genauer.
+Diese Form des Training nennt man überwachtes Lernen.
+Andere Trainingsmethoden sind unüberwachtes Lernen, ...
 
 \section{Sprachmodelle}
 
 \subsection{Quantisierung}
 Quantisierung im Kontext von Sprachmodellen ist ein Prozess, bei dem die Genauigkeit der Gewichte verringert wird.
-Beispielsweise werden 32 Bit Fließkommazahlen auf einen 8 Bit Bereich reduziert und gerundet.
+Beispielsweise werden 32 Bit Fließkommazahlen auf einen 8-Bit-Bereich reduziert und gerundet.
 Dadurch nimmt Präzision des Sprachmodells ab, allerdings wird weniger Rechenleistung benötigt und die Berechnungen laufen schneller.
 
 \subsection{Transformers}
@@ -70,7 +75,7 @@ Die Performance eines Transkriptionsmodells ist stark abhängig von der verwende
 
 \section{Pseudonymisierung und Anonymisierung}
 Pseudonymisierung und Anonymisierung werden genutzt, wenn personenbezogene Informationen niemandem zugeordnet werden sollen.
-Es sind Wege solche Daten von Personen zu trennen um diese nicht zu belasten.
+Es sind Wege solche Daten von Personen zu trennen um, diese nicht zu belasten.
 
 \begin{definition}[Pseudonymisierung]
 Bei der Pseudonymisierung wird der Name einer Person durch einen anderen Namen ersetzt.
@@ -80,6 +85,6 @@ Bei der Pseudonymisierung wird der Name einer Person durch einen anderen Namen e
 \end{definition}
 
 \begin{definition}[Anonymisierung]
-Bei der Anonymisierung wird ein Name entfernt und stattdessen eine Bezeichnung, wie "Schüler 1", verwendet die man der Person nicht zuordnen kann.
+Bei der Anonymisierung wird ein Name entfernt und stattdessen eine Bezeichnung wie \enquote{Schüler 1} verwendet, die man der Person nicht zuordnen kann.
 %Bei Anonymisierung werden Namen von Personen entfernt. Bspw. wird dann "Max Mustermann" zu "Schüler"
 \end{definition}
