@@ -12,34 +12,4 @@ Als Ergebnis der Transkription erhält man eine HTML Datei, welche automatisch g
 Das ist hilfreich, falls das Programm zwischendurch abstürzt oder auf anderem Weg unterbrochen wird.
 Es gibt eine Variante von noScribe, welche Nvidia CUDA verwendet, um die Prozesse über die GPU auszuführen und damit stark zu beschleunigen.
 Dafür wird eine Nvidia Grafikkarte mit mindestens 6GB VRAM benötigt.
-Die Transkription der Vorlesungen (\cref{tab:vorlesungen}) mit noScribe erfolgt auf einem leistungsfähigen Rechner des Instituts, welcher mit einer Nvidia GeForce RTX 3090 Grafikkarte, einer Intel core i7-9700KF CPU und 32GB RAM ausgestattet ist.
-Die Grafikkarte ermöglicht die Verwendung der schnelleren CUDA-Variante von noScribe. 
-Die Audiodateien der Vorlesungen  werden einzeln transkribiert, weil sonst zu viel RAM benötigt wird, was zu Abstürzen führt.
-Dabei werden die Parameter wie folgt belegt.
-
-
-
-
-\begin{table}
-    \centering
-    \begin{tabulary}{\textwidth}{lLl}
-        \toprule
-        \textbf{Parameter} & \textbf{Beschreibung} & \textbf{Einstellung} \\
-        \midrule
-        Start/Stop & Festlegung der gewünschten Start- und Endzeitpunkte & --- \\
-        Language & Angabe der Sprache der Audio & German \\
-        Model & Auswahl des Transkriptionsmodells. Voreingestellt sind "Precise" (Whisper large-v3-turbo) und "Fast" (Whisper large-v3-turbo 8-Bit-quantisiert). Es lassen sich aber auch andere Modelle hinzufügen & Precise \\
-        Mark pause & Gibt Sprechpausen an & Aus \\
-        Speaker detection & Unterscheidet zwischen verschiedenen Sprechern & Ein \\
-        Overlapping speech & Kennzeichnet gleichzeitiges Sprechen & Aus \\
-        Disfluencies & Transkribiert auch Füllworte & Aus \\
-        Timestamps & Zeitstempel nach jedem Sprecherwechsel oder alle 60 Sekunden & Aus \\
-        \bottomrule
-    \end{tabulary}
-    \caption{Einstellungen der Transkriptionsoptionen}
-    \label{tab:transkription_einstellungen}
-\end{table}
-
-
-Laut Anwendung ist die Transkription zwei bis fünf Mal langsamer als die Audio.
-Durch die Beschleunigung mit CUDA war die Transkription stattdessen im Durchschnitt fünf Mal schneller.
+s

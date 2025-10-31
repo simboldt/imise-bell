@@ -4,9 +4,7 @@
 \chapter{Ausführung der Lösung}\label{ch:solution}
 %*****************************************
 
-\section{Transkription}
-
-\subsection{Inhalt der Vorlesungen}
+\section{Inhalt der Vorlesungen}
 
 Eine Vorlesung besteht in der Regel aus einer Doppelstunde von 90 Minuten.
 Hier wurden meistens gleich zwei Vorlesungen in Einheiten von etwa drei Stunden gehalten.
@@ -56,10 +54,37 @@ Der Inhalt dieser Vorlesungen richtet sich nach \citet{bb2}, siehe \cref{tab:vor
 \end{table}
 
 
-%Im Buch 42k Wörter,
-%Im Transkript 167k Wörter
+\section{Erstellen des Transkripts}
+Die Transkription der Vorlesungen (\cref{tab:vorlesungen}) mit noScribe erfolgt auf einem leistungsfähigen Rechner des Instituts, welcher mit einer Nvidia GeForce RTX 3090 Grafikkarte, einer Intel core i7-9700KF CPU und 32GB RAM ausgestattet ist.
+Die Grafikkarte ermöglicht die Verwendung der schnelleren CUDA-Variante von noScribe. 
+Die Audiodateien werden einzeln transkribiert, weil sonst zu viel RAM benötigt wird, was zu Abstürzen führt.
+Dabei werden die Parameter wie folgt belegt.
 
-\subsection{Transkriptionsmodell}
+
+\begin{table}
+    \centering
+    \begin{tabulary}{\textwidth}{lLl}
+        \toprule
+        \textbf{Parameter} & \textbf{Beschreibung} & \textbf{Einstellung} \\
+        \midrule
+        Start/Stop & Festlegung der gewünschten Start- und Endzeitpunkte & --- \\
+        Language & Angabe der Sprache der Audio & German \\
+        Model & Auswahl des Transkriptionsmodells. Voreingestellt sind "Precise" (Whisper large-v3-turbo) und "Fast" (Whisper large-v3-turbo 8-Bit-quantisiert). Es lassen sich aber auch andere Modelle hinzufügen & Precise \\
+        Mark pause & Gibt Sprechpausen an & Aus \\
+        Speaker detection & Unterscheidet zwischen verschiedenen Sprechern & Ein \\
+        Overlapping speech & Kennzeichnet gleichzeitiges Sprechen & Aus \\
+        Disfluencies & Transkribiert auch Füllworte & Aus \\
+        Timestamps & Zeitstempel nach jedem Sprecherwechsel oder alle 60 Sekunden & Aus \\
+        \bottomrule
+    \end{tabulary}
+    \caption{Einstellungen der Transkriptionsoptionen}
+    \label{tab:transkription_einstellungen}
+\end{table}
+
+
+Laut Anwendung ist die Transkription zwei bis fünf Mal langsamer als die Audio.
+Durch die Beschleunigung mit CUDA war die Transkription stattdessen im Durchschnitt fünf Mal schneller.
+Das ausgegebene Transkript umfasst 167.000 Wörter.
 
 
 %Modell: Open AI Whisper \citep{whisper}
@@ -101,10 +126,14 @@ Der Inhalt dieser Vorlesungen richtet sich nach \citet{bb2}, siehe \cref{tab:vor
 
 
 
-\section{Korrektur}
-\subsection{Fehler}
+\subsection{Manuelle Überarbeitung}
+Die Schritte der Korrektur, und Anonymisierung werden für einen Teil des Transkripts manuell durchgeführt.
+Dieser Teil soll beispielhaft als Basis für das Question Answering genutzt werden.
+
 %Es versch 
 %FHIR als FIRE
 %Physical Tool Layer als Physik-Kultur-Lehrer oder Physikaturlehrer
 %HL7 als HAL7
 %Zyklen als Zöcklen
+
+\section{Question Answering}
