@@ -1,15 +1,78 @@
 %*****************************************
 \chapter{Lösungsansatz}\label{ch:approach}
 %*****************************************
-%Der Lösungsansatz ist eine kurze Beschreibung der Arbeitshypothese sowie des Vorgehens zur Lösung der in der Einleitung beschriebenen Probleme.
 
-\section{noScribe}
+Diese Arbeit verfolgt das Ziel das Question Answering mittels \ac{rag} auf Basis eines Transkripts von Vorlesungsaufnahmen vorzubereiten.
+Als erstes müssen dafür die Vorlesungen transkribiert werden.
 
-noScribe~\citep{noscribe} ist eine Open Source Software zum transkribieren von Audioaufnahmen welche eine Benutzeroberfläche inklusive Editor bereitstellt.
-noScribe verwendet standardmäßig OpenAI Whisper, ermöglicht aber auch das Hinzufügen anderer Modelle. 
-Es läuft vollständig lokal, was aufgrund der sehr langen Audio notwendig ist.
-Als Ergebnis der Transkription erhält man eine HTML Datei, welche automatisch gespeichert wird.
-Das ist hilfreich, falls das Programm zwischendurch abstürzt oder auf anderem Weg unterbrochen wird.
-Es gibt eine Variante von noScribe, welche Nvidia CUDA verwendet, um die Prozesse über die GPU auszuführen und damit stark zu beschleunigen.
-Dafür wird eine Nvidia Grafikkarte mit mindestens 6GB VRAM benötigt.
-s
+\section{Transkription}
+
+\subsection{Inhalt der Vorlesungen}
+Eine Vorlesung besteht in der Regel aus einer Doppelstunde von 90 Minuten.
+Meistens wurden gleich zwei Vorlesungen in Einheiten von etwa drei Stunden gehalten.
+So ergeben sich 12 Aufzeichnungen mit insgesamt 22 Vorlesungen und einer Gesamtlänge von 32 Stunden und fünf Minuten. 
+Der Inhalt dieser Vorlesungen basiert auf \cite{bb2}. % Dieses Buch behandelt ... %Hier noch HIS, Inhalt des Buchs beschreiben
+Die Zuordnung der Kapitel des Buchs zu den Vorlesungen ist in \cref{tab:vorlesungen} dargestellt.
+
+\begin{table}
+\begin{tabulary}{\textwidth}{lLll}
+\toprule
+\textbf{Nr.} & \textbf{Kapitel} & \textbf{Datum} & \textbf{Länge}\\
+\midrule
+1 & 1. Introduction &  & \\
+2 & 2. Health Institutions and Information Processing &  & \\
+1--2 &  & 13.04.2021& 3:03:54\\
+\midrule
+3 & 3. Information System Basics & 15.04.2021 & 1:36:19 \\
+\midrule
+4 & 4. Health Information Systems &  & \\
+ & 5. Modeling HIS &  & \\
+5 & 5.1--5.2 &  & \\
+4--5 &  & 20.04.2021 & 2:40:33 \\
+\midrule
+6--7 & 5.3--5.5 & 27.04.2021 & 2:56:34 \\ %26:52
+\midrule
+ & 6. Architecture of HIS &  & \\
+8--9 & 6.1.--6.3. Functions, Data & 04.05.2021 & 3:00:36 \\
+\midrule
+10--11 & 6.4. Application Components& 11.05.2021 & 2:39:46 \\
+\midrule
+12--13 & 6.5. Integration & 18.05.2021 & 3:26:06 \\
+\midrule
+14--15 & 6.5. Integration & 25.05.2021 & 1:48:54 \\ %Ende Fehlt, Für eine kurze Pause ausgeschaltetr, vergessen
+\midrule
+16--17 & 6.6--6.7 Physical Tool Layer& 01.06.2021 & 3:11:34 \\
+\midrule
+18--19 & 7. Specific Aspects for Architectures of Transinstitutional HIS & 08.06.2021 & 3:17:44 \\
+\midrule
+20--21 & 8. Quality of HIS & 22.06.2021 & 2:50:15 \\
+\midrule
+22 & Ergänzung zu rechtlichen Anforderungen & 08.07.2021 & 1:32:45 \\
+\midrule
+& & & Gesamt: 32:05:00 \\
+\bottomrule
+\end{tabulary}
+\caption{Zuordnung der Kapitel des Buches zu den Vorlesungen}
+\label{tab:vorlesungen}
+\end{table}
+
+\subsection{Methode}
+Die Transkription soll ein \ac{llm} verwendet werden.
+%Spart enorm Zeit, ist sogar genauer als transkription per Hand (Paper als Quelle)
+Aufgrund seiner hohen Genauigkeit, wurde OpenAI Whisper als Transkriptionsmodell ausgewählt.
+Insbesondere beim Umgang mit Fachsprache übertrifft Whisper andere Modelle.
+Da in den Vorlesungen vor allem fachliche Inhalte thematisiert werden ist diese Eigenschaft besonders wichtig.
+Aus den verschiedenen Whisper Modellen wurde Whisper turbo ausgewählt, weil es eines der genausten und gleichzeitig schnellsten ist.
+%Jetz noch noScribe (ausgewählt weil open source, whisper turbo voreingestellt)
+%RAG (cite\hallucination)
+%warum exemplarisch ok ist
+
+%~~~~~~~~~~Scheitern von OpenAI API~~~~~~~~~~~~~~~
+%https://platform.openai.com/docs/guides/speech-to-text
+
+%Whisper API in Python 
+%Problem: Immer nur 25MB gleichzeitig, output.opus  = 655 MB; keine Diarization 
+%Lösung: Datei in Abschnitte gliedern (OpenAIs Guide folgend)
+
+%Sehr geringes limit mit der API
+%Fehler: openai.RateLimitError: Error code: 429

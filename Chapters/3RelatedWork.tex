@@ -2,34 +2,21 @@
 \chapter{Stand der Forschung}\label{ch:relatedWork}
 %*****************************************
 
-%Kann auch im Grundlagenkapitel mit integriert werden! Wenn es zwei Kapitel sind, ist das Grundlagenkapitel für bekanntes \enquote{Lehrbuchwissen} gedacht, der \enquote{Stand der Forschung} für Vorarbeiten in Publikationen.
+In diesem Kapitel wird die verwendete Software beschrieben und die Vorarbeit, auf die sich diese Arbeit stützt erläutert.
 
-%Grundlage für eine Abschlussarbeit ist eine gründliche Recherche im Themenumfeld.
-%Dabei ist es ausdrücklich nicht hinreichend, mit bekannten Suchmaschinen im Internet zu recherchieren.
-%Vielmehr wird von den Studierenden erwartet, dass sie auch referierte Veröffentlichungen (wissenschaftliche Zeitschriften (auch elektronisch), Bücher) in die Erarbeitung einbeziehen (und mit entsprechenden Quellenangaben belegen).
-%Informationen zum Thema der Literaturrecherche finden sich in den \href{http://www.imise.uni-leipzig.de/Lehre/MedInf/Abschlussarbeiten/Literaturrecherche}{Hinweisen zur Literaturrecherche}.
-%Wir empfehlen Ihnen, Kurse zur Literaturrecherche zu belegen, z.B. beim \href{https://home.uni-leipzig.de/academiclab/}{Academic Lab} oder der \href{https://www.ub.uni-leipzig.de/service/workshops-und-online-tutorials/}{Universitätsbibliothek}.
-%Im \href{https://home.uni-leipzig.de/schreibportal/}{Onlineportal zum Wissenschaftlichen Schreiben der Uni Leipzig} finden Sie wertvolle Hinweise und Übungen zu Textstruktur, Stilistik, Schreibprozess sowie Quellen und Zitaten.
-
-%\paragraph{Beispielzitierungen}
-%\citet{sniktec} beschreiben ein Verfahren zur X von Y auf Basis von Z."
-%Alternativ: X von Y lässt sich auf Basis von Z ermitteln~\citep{sniktec}.
-
-\section{Transkriptionsmodelle}
-
-\subsection{Whisper}
+\section{Whisper}
 Whisper ist ein Open-Source-Transkriptionsmodell von OpenAI, welches mit 680.000 Stunden an Audio aus dem Internet in verschiedenen Sprachen trainiert wurde.
 Aufgrund der weitreichenden Diversität der Trainingsdaten erreicht Whisper auch bei Akzenten und Fachsprache  hohe Genauigkeit \citep{whisper}.
 Durch den großen Umfang des Trainings erreicht Whisper eine gute Zero-Shot-Performance, kommt also gut mit Daten zurecht, auf die es nicht spezifisch trainiert wurde.
 
 %Vergleich vieler ASR Modelle anhand deutsch- und englischsprachiger Youtubevideo Ausschnitte: OpenAI Whisper in allen Kategorien niedrigste \ac{wer}, vor allem in deutscher Sprache mit 5.0 bei einem Durchschnitt von 15.3 (Platz 2: Speechmatics 8.0, Platz 3: Microsoft 10.1), allerdings am langsamsten \citet{VergleichASR2023}
 
-\subsubsection{Whisper-Modelle}
+\subsection{Whisper-Modelle}
 Es existieren verschiedene Whisper-Modelle (\cref{tab:whisper_modelle})
 Das größte dieser Modelle, Whisper large, gibt es in drei Versionen:
 Whisper large, Whisper large-v2, Whisper large-v3.
-Whisper turbo ist eine 8-Bit-quantisierte Version von Whisper large-v3.
-Die Modelle werden mit zunehmender Größe genauer, aber auch langsamer.
+Whisper turbo ist eine quantisierte Version von Whisper large-v3.
+Die Modelle werden mit zunehmender Größe langsamer, aber auch genauer, das heißt die \ac{wer} nimmt ab.
 Whisper Turbo ist dabei eine Ausnahme, weil es ähnlich genau wie Whisper large-v2 und gleichzeitig fast so schnell wie Whisper tiny ist \citep{distilwhisper}.
 
 \begin{table}
@@ -48,22 +35,14 @@ Turbo & \qty{809}{\mega\nounit}\\
 \label{tab:whisper_modelle}
 \end{table}
 
-%\subsection{Nvidia Canary}
-%\citet{canary}
-%
-%\begin{table}
-%\begin{tabulary}{\textwidth}{lLll}
-%\toprule
-%\textbf{Modell} & \textbf{Parameter} & \textbf{WER (De)} & \textbf{Training}\\
-%Whisper-large v3 & 1,55b & 9,5 & 680k hours\\
-%Canary & 1b & 6,4 & 86k hours\\
-%\bottomrule
-%\end{tabulary}
-%\caption{Vergleich von Canary 1b und Whisper}
-%\label{tab:Canary vs Whisper}
-%\end{table}
-%
-%\subsection{Moonshine}
-
+\section{noScribe}
+Die Software noScribe~\citep{noscribe} ist eine Open Source Anwendung zum Transkribieren von Audioaufnahmen, welche eine Benutzeroberfläche inklusive Editor bereitstellt.
+Sie verwendet standardmäßig OpenAI Whisper, ermöglicht aber auch das Hinzufügen anderer Modelle. 
+Die Software noScribe läuft vollständig lokal, verwendet also kein externen Server für die Berechnung.
+Das ist notwendig, da externe Anbieter in der Regel nicht die benötigte Leistung bereitstellen, welche hier aufgrund der Größe der Audiodateien sehr hoch ist.
+Als Ergebnis der Transkription erhält man eine HTML Datei, welche während dem Vorgang regelmäßig automatisch gespeichert wird.
+Das ist hilfreich, falls das Programm zwischendurch abstürzt oder auf anderem Weg unterbrochen wird.
+Deben der Standartversion von noScribe gibt es eine weitere Variante, welche Nvidia CUDA verwendet, um die Prozesse über die Grafikkarte auszuführen und damit stark zu beschleunigen.
+Dafür wird eine Nvidia Grafikkarte mit mindestens 6GB VRAM benötigt.
 
 \section{Nvidia CUDA}
