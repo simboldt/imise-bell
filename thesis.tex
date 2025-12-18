@@ -46,22 +46,19 @@
 \include{FrontBackmatter/Titleback}
 %\cleardoublepage\include{FrontBackmatter/Dedication}
 %\cleardoublepage\include{FrontBackmatter/Foreword}
+\include{FrontBackmatter/Summary}
 \pagenumbering{arabic} % für Schulvorgabe
 \cleardoublepage\include{FrontBackmatter/Contents}
-\cleardoublepage\include{FrontBackmatter/Summary}
 %********************************************************************
 % Mainmatter
 %*******************************************************
-\cleardoublepage
 \pagestyle{scrheadings}
 %\pagenumbering{arabic}
 %\setcounter{page}{90}
-\cleardoublepage
-\cleardoublepage
 \include{Chapters/1Introduction}
 \cleardoublepage
 \include{Chapters/2Preliminaries}
-%\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
+%\addtocontents{toc}{\protect\cleardoublepage} % <--- just debug stuff, ignore
 \include{Chapters/3RelatedWork}
 \include{Chapters/4Approach}
 \include{Chapters/5Solution}
@@ -76,7 +73,7 @@
 %\renewcommand{\thechapter}{\alph{chapter}}
 \cleardoublepage
 \part*{Appendix}
-%\include{Chapters/LatexTips}
+\include{Chapters/Transcript}
 %\include{Chapters/GitTips}
 %\include{Chapters/PrintTips}
 %********************************************************************

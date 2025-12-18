@@ -21,16 +21,28 @@ Transkription wird genutzt, weil eine schriftliche Aufzeichnung oftmals leichter
 Neuronale Netze sind lose an die Funktionsweise biologischer Nervenzellen angelehnt und werden verwendet, um verschiedene komplexe Aufgaben zu lösen.
 Sie bestehen aus vielen künstlichen Neuronen in verschiedenen Schichten.
 Es gibt eine Eingabeschicht, eine Ausgabeschicht und dazwischen beliebig viele versteckte Schichten.
-Zwischen den Neuronen existieren gewichtete Verbindungen. %(Abb. noch einfügen) Shiruru, Kuldeep in thesis.bib
+Zwischen den Neuronen existieren gewichtete Verbindungen, siehe \cref{fig:neuron1}.
 Den Neuronen der Eingabeschicht wird durch die Eingabe ein Wert zugewiesen.
 Es kann in jeder Schicht zusätzlich ein sogenanntes Bias-Neuron geben.
 Dessen Wert ist nicht von der Eingabe abhängig und wird als feste Größe eingerechnet.
 Die Werte der Neuronen in den tieferen Schichten werden aus denen der vorherigen Schicht berechnet.
 Der Wert jedes Neurons der höheren Schicht wird dafür zuerst mit dem dazugehörigen Gewicht multipliziert.
-Danach werden alle dieser Produkte summiert und durch eine weitere sogenannte Aktivierungsfunktion verändert.
+Danach werden alle dieser Produkte summiert und durch eine weitere sogenannte Aktivierungsfunktion verändert, siehe \cref{fig:neuron2}.
 Das Ergebnis dieser Berechnung wird der Wert des entsprechenden Neurons aus der tieferen Schicht.
 Dieser Vorgang wiederholt sich für alle weiteren Schichten.
 Die Ausgabe des neuronalen Netzes bildet sich schließlich aus den Werten der Neuronen der Ausgabeschicht.
+
+\begin{figure}
+\centering\includegraphics[width=0.8\textwidth]{img/neuron1.png}
+\caption{Struktur eines neuronalen Netzes.\\Quelle: \citet{article}.}
+\label{fig:neuron1}
+\end{figure}
+
+\begin{figure}
+\centering\includegraphics[width=0.8\textwidth]{img/neuron2.png}
+\caption{Funktionsweise eines künstlichen Neurons.\\Quelle: \citet{article}.}
+\label{fig:neuron2}
+\end{figure}
 
 \subsection{Training von neuronalen Netzen, maschinelles Lernen}
 Die Gewichte der Verbindungen und die Werte der Bias-Neuronen bilden die Parameter des neuronalen Netzes und bestimmen dessen Funktion.
@@ -87,12 +99,11 @@ Sprachmodelle, die diesen Zweck erfüllen, werden als Transkriptionsmodelle beze
 Die Qualität eines Transkriptionsmodells misst sich an verschiedenen Kriterien, wie der Geschwindigkeit des Transkriptionsvorgangs und der Genauigkeit des Transkripts.
 Die gängigste Methode zur Bewertung der Genauigkeit ist die \ac{wer}.
 Diese gibt an, wie viele Prozent der Wörter N verglichen mit einem korrekten Transkript fehlerhaft sind.
-Fehler sind dabei zusätzliche Wörter I (\textit{insertion}), fehlende Wörter D (\textit{deletion}) und ausgetauschte Wörter S (\textit{substitution}):\\
-
-\[\textnormal{WER} = \frac{I + D + S}{N} \times 100\]\\
-
-(vgl. \cite{wer})
-
+Fehler sind dabei zusätzliche Wörter I (\textit{insertion}), fehlende Wörter D (\textit{deletion}) und ausgetauschte Wörter S (\textit{substitution}) (vgl. \cite{wer}):
+\begin{equation*}
+\textnormal{WER} = \frac{I + D + S}{N} \cdot 100
+\label{eq:wer}
+\end{equation*}
 
 Die \ac{wer} ist somit ein Maß für die Ungenauigkeit einer Transkription, wobei eine niedrigere \ac{wer} eine hohe Genauigkeit angibt.
 Um sie möglichst genau zu ermitteln, müssen lange Audioeingaben verwendet werden.
@@ -122,18 +133,18 @@ Da nur ein bestimmter Teil der Daten als Kontext verwendet wird, können keine I
 Anonymisierung und Pseudonymisierung werden genutzt, wenn personenbezogene Informationen niemandem zugeordnet werden sollen.
 Es sind Wege solche Daten von Personen zu trennen, um sie nicht zu belasten.
 
-\begin{definition}[Anonymisierung]
+\begin{definition*}[Anonymisierung]
 
 \enquote{Anonymisierung ermöglicht es, den Personenbezug von Daten zu entfernen. 
 Anonymisierte Daten können nicht mehr oder nur sehr eingeschränkt auf einzelne Personen bezogen werden.} 
 (S.183, \cite{Dewes2022})
 
-\end{definition}
+\end{definition*}
 
-\begin{definition}[Pseudonymisierung]
+\begin{definition*}[Pseudonymisierung]
 
 \enquote{Pseudonymisierung verfolgt im Gegensatz zur Anonymisierung nicht das Ziel, den Personenbezug von Daten komplett zu entfernen, sondern soll vielmehr die Zuordnung einzelner Datensätze zu spezifischen Personen über technische und organisatorische Maßnahmen einschränken und kontrollierbar machen.} 
 (S.184, \cite{Dewes2022})
 
-\end{definition}
+\end{definition*}
 
