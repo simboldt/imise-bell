@@ -18,74 +18,82 @@ Die Methode der Transkription beschreibt \enquote{Die Verschriftlichung menschli
 Transkription wird genutzt, weil eine schriftliche Aufzeichnung oftmals leichter durchsucht und bearbeitet werden kann.
 
 \section{Neuronale Netze}
-Neuronale Netze basieren auf der Funktionsweise biologischer Nervenzellen und werden verwendet um verschiedene komplexe Aufgaben zu lösen.
+Neuronale Netze sind lose an die Funktionsweise biologischer Nervenzellen angelehnt und werden verwendet, um verschiedene komplexe Aufgaben zu lösen.
 Sie bestehen aus vielen künstlichen Neuronen in verschiedenen Schichten.
 Es gibt eine Eingabeschicht, eine Ausgabeschicht und dazwischen beliebig viele versteckte Schichten.
-Zwischen den Neuronen existieren gewichtete Verbindungen (Abb. noch einfügen).
+Zwischen den Neuronen existieren gewichtete Verbindungen. %(Abb. noch einfügen) Shiruru, Kuldeep in thesis.bib
 Den Neuronen der Eingabeschicht wird durch die Eingabe ein Wert zugewiesen.
 Es kann in jeder Schicht zusätzlich ein sogenanntes Bias-Neuron geben.
-Dessen Wert ist nicht von der Eingabe abhängen und wird als feste Größe eingerechnet.
-Die Werte der weiteren Neuronen werden aus denen der vorherigen Schicht berechnet.
-Dafür werden diese jeweils mit dem Gewicht der Verbindung zwischen den Neuronen multipliziert und dann addiert.
-Das Ergebnis dieser Rechnung wird durch eine weitere Funktion bearbeitet.%ug
-Die Werte der Neuronen in der Ausgabeschicht bilden die Ausgabe des neuronalen Netzes.
+Dessen Wert ist nicht von der Eingabe abhängig und wird als feste Größe eingerechnet.
+Die Werte der Neuronen in den tieferen Schichten werden aus denen der vorherigen Schicht berechnet.
+Der Wert jedes Neurons der höheren Schicht wird dafür zuerst mit dem dazugehörigen Gewicht multipliziert.
+Danach werden alle dieser Produkte summiert und durch eine weitere sogenannte Aktivierungsfunktion verändert.
+Das Ergebnis dieser Berechnung wird der Wert des entsprechenden Neurons aus der tieferen Schicht.
+Dieser Vorgang wiederholt sich für alle weiteren Schichten.
+Die Ausgabe des neuronalen Netzes bildet sich schließlich aus den Werten der Neuronen der Ausgabeschicht.
 
-\subsection{Training von neuronalen Netzen, Maschinelles Lernen}
-Die Gewichte der Verbindungen und der Bias bilden die Parameter des neuronalen Netzes und bestimmen dessen Funktion.
-Beim Training werden Datenpaare aus Eingabe und korrekter dazugehöriger Ausgabe oder \textit{label} verwendet.
-Die Ausgaben des neuronalen Netzes werden dann mit dem Label verglichen.
+\subsection{Training von neuronalen Netzen, maschinelles Lernen}
+Die Gewichte der Verbindungen und die Werte der Bias-Neuronen bilden die Parameter des neuronalen Netzes und bestimmen dessen Funktion.
+Beim Training werden Datenpaare aus Eingabe und korrekter dazugehöriger Ausgabe oder \textit{Label} verwendet.
+Die Ausgaben des neuronale Netzes bei den gleichen Eingaben werden dann mit dem Label verglichen.
 Aus deren Differenz wird ein Fehlerwert berechnet.
 Die Parameter werden daraufhin so angepasst, dass sich dieser Fehlerwert verringert.
 Wenn dieser Vorgang mit großen Mengen von Daten immer wieder durchgeführt wird, werden die Ausgaben auch für unbekannte Daten immer genauer.
-Diese Form des Training nennt man überwachtes Lernen.
+Diese Form des Trainings nennt man überwachtes Lernen.
 
-\subsection{Weitere Trainingsmethoden} %Ist das Kapitel notwendig?
+\subsection{Weitere Trainingsmethoden}
 
 Eine weitere Trainingsmethoden ist das unüberwachte Lernen.
 Dafür werden unmarkierte Daten verwendet.
-Dem neuronalen Netz wird hier also keine Lösung vorgegeben und es soll stattdessen selbständig Muster in den Daten erkennen und diese in \textit{cluster} einteilen.
+Dem neuronalen Netz wird hier also keine Lösung vorgegeben und es soll stattdessen selbständig Muster in den Daten erkennen und diese in \textit{Cluster} einteilen.
 
 
-Beim Semi-überwachten lernen werden gemischte Trainingsdaten bestehend aus einem kleinen Teil gelabelter und einem großen Teil ungelabelter Daten.
-Die gelabelten Daten geben dem neuronalen Netz die cluster vor und der Rest verläuft analog zum unüberwachten Lernen.
+Beim semi-überwachten Lernen werden gemischte Trainingsdaten verwendet. 
+Sie bestehen aus einem kleinen Teil gelabelter und einem großen Teil ungelabelter Daten.
+Die gelabelten Daten geben dem neuronalen Netz die Cluster vor und der Rest verläuft analog zum unüberwachten Lernen.
 
 
 Selbstüberwachtes Lernen verläuft analog zum überwachten Lernen, jedoch unterscheidet sich die Art der Trainingsdaten.
 Während diesen beim überwachten Lernen zunächst ein Label hinzugefügt werden muss, benutzt man hier einen Teil jedes Datensatzes als Label für den Datensatz.
 
 
-Reinforcement Learning from Human Feedback (RLHF) ist eine Trainingsmethode für Neuronale Netze, welche deren Leistung durch menschliches Feedback optimiert.
-Das Modell wird dafür zuerst mit einer anderen Methode auf Basis großer Datenmengen trainiert.
-Danach wird Menschliches Feedback zu den Ausgaben des Modells gesammelt.
-Diese Beurteilungen werden als weitere Trainingsdaten genutzt.
-Dadurch lernt das Sprachmodell den Präferenzen des Benutzers besser zu folgen.
+\ac{rl} ist eine Trainingsmethode, bei der ein neuronales Netz selbständig Aufgaben durchführt und für seine Leistung entweder belohnt oder bestraft wird.
+Das Modell optimiert sich nach jedem neuen Versuch um die Belohnungen zu maximieren und wird so immer besser im Lösen der Aufgabe.
+
+
 
 \subsection{Quantisierung}
 Bei der Verwendung von großen neuronalen Netzen wird viel Rechenleistung benötigt und die Berechnungen nehmen viel Zeit in Anspruch.
 Eine Möglichkeit diesen Aufwand zu verringern ist die Quantisierung.
-Diese ist ein Prozess, bei dem die Werte der Gewichte des Neuronalen Netzes gerundet werden, wodurch sich die Präzision des Sprachmodells verringert.
+Diese ist ein Prozess, bei dem die Werte der Gewichte des neuronalen Netzes gerundet werden, wodurch sich die Präzision des Sprachmodells leicht verringert.
 Vor allem nimmt jedoch der Bedarf ab Rechenleistung ab und die Geschwindigkeit des Modells erhöht sich.
 
 \section{Sprachmodelle}
 
-Sprachmodelle sind Neuronale Netze, die mit menschlicher Sprache arbeiten.
-%Unterschiede zu NN im algemeinen
+Sprachmodelle sind neuronale Netze, die menschliche Sprache verarbeiten.
+Sie sind eine Methode des \ac{nlp}.
+Das ist ein Feld der Informatik, welches sich mit dem Verstehen und Generieren von menschlicher Sprache befasst.
 
-\subsection{Transformer}
+%\subsection{Transformer}
 
 \subsection{Automatische Spracherkennung (ASR)}
 Ein Anwendungsbereich von Sprachmodellen ist die \ac{asr}.
-\ac{asr} Systeme sind Technologien, welche gesprochene Sprache in Text umwandeln (vgl. \cite{Rista202086112}).
+\ac{asr}-Systeme sind Technologien, welche gesprochene Sprache automatisch in Text umwandeln (vgl. \cite{Rista202086112}).
 Automatische Spracherkennung wird beispielsweise zur Transkription von Tonaufnahmen verwendet.
-Sprachmodelle die diesen Zweck erfüllen werden als Transkriptionsmodelle bezeichnet.
+Sprachmodelle, die diesen Zweck erfüllen, werden als Transkriptionsmodelle bezeichnet.
 
 
 \subsubsection{Bewertung von Transkriptionsmodellen}
 Die Qualität eines Transkriptionsmodells misst sich an verschiedenen Kriterien, wie der Geschwindigkeit des Transkriptionsvorgangs und der Genauigkeit des Transkripts.
-Die gängigste Methode zur Bewertung der Genauigkeit ist die \ac{wer}~\citep{wer}.
+Die gängigste Methode zur Bewertung der Genauigkeit ist die \ac{wer}.
 Diese gibt an, wie viele Prozent der Wörter N verglichen mit einem korrekten Transkript fehlerhaft sind.
-Fehler sind dabei zusätzliche Wörter I (\textit{insertion}), fehlende Wörter D (\textit{deletion}) und ausgetauschte Wörter S (\textit{substitution}):
-\[\textnormal{WER} = \frac{I + D + S}{N} \times 100\]
+Fehler sind dabei zusätzliche Wörter I (\textit{insertion}), fehlende Wörter D (\textit{deletion}) und ausgetauschte Wörter S (\textit{substitution}):\\
+
+\[\textnormal{WER} = \frac{I + D + S}{N} \times 100\]\\
+
+(vgl. \cite{wer})
+
+
 Die \ac{wer} ist somit ein Maß für die Ungenauigkeit einer Transkription, wobei eine niedrigere \ac{wer} eine hohe Genauigkeit angibt.
 Um sie möglichst genau zu ermitteln, müssen lange Audioeingaben verwendet werden.
 Die Leistung eines Transkriptionsmodells ist stark abhängig von der verwendeten Audiodatei und den verwendeten Geräten, weshalb sich \ac{wer} Werte aus verschiedenen Tests oft nicht vergleichen lassen.
@@ -95,43 +103,37 @@ Man muss also für jede Anwendung zwischen Geschwindigkeit und Genauigkeit abwä
 \subsection{Question Answering}
 
 \ac{qa} ist eine weitere Anwendungsmöglichkeit von Sprachmodellen.
-\ac{qa} Modelle beantworten automatisiert Fragen in menschlicher Sprache (vgl. \cite{2021SurveyQA}).
-
-%Noch mehr erklähren
+\ac{qa}-Systeme beantworten automatisiert Fragen von Menschen in menschlicher Sprache. (vgl. \cite{2021SurveyQA})
 
 \subsubsection{Retrieval-Augmented Generation (RAG)}
-\ac{rag} ist eine Methode welche genutzt wird um die Genauigkeit der Antworten von \ac{qa} Modellen durch das Einbeziehen externen Wissens verbessern.
+\ac{rag} ist eine Methode, welche genutzt wird, um die Genauigkeit der Antworten von \ac{qa}-Modellen durch das Einbeziehen externen Wissens zu verbessern.
 Dafür wird zuerst der für die Beantwortung einer Frage relevante Inhalt aus den bereitgestellten Daten abgerufen. 
-Dann wird eine Anfrage an das \ac{llm} erstellt, welche den gefundenen Inhalt als Kontext, sowie die ursprüngliche Frage enthält.
+Dann wird eine Anfrage an das \ac{llm} erstellt, welche den gefundenen Inhalt als Kontext sowie die ursprüngliche Frage enthält.
 Diese wird an das \ac{llm} weitergegeben und beantwortet.
 Mit \ac{rag} können somit neue Informationen berücksichtigt werden, welche nicht in den Trainingsdaten enthalten waren oder sich seit dem Training geändert haben.
-Man kann damit eine höhere Genauigkeit für einen bestimmten Themenbereich erreichen, ohne dass man das Modell spezifisch für diesen trainieren muss (vgl. \cite{rag}), was wesentlich aufwendiger wäre.
+Man kann damit eine höhere Genauigkeit für einen bestimmten Themenbereich erreichen, ohne dass man das Modell spezifisch für diesen trainieren muss, was wesentlich aufwendiger wäre.
 Bei \ac{rag} ist ersichtlich, wo die Informationen in der Antwort herkommen.
 Das sorgt für mehr Zuverlässigkeit und Transparenz.
 Da nur ein bestimmter Teil der Daten als Kontext verwendet wird, können keine Informationen aus verschiedenen Teilen in die Beantwortung einbezogen werden.
+\citep{rag}
 
 \section{Anonymisierung und Pseudonymisierung}
 
 Anonymisierung und Pseudonymisierung werden genutzt, wenn personenbezogene Informationen niemandem zugeordnet werden sollen.
-Es sind Wege solche Daten von Personen zu trennen, um diese nicht zu belasten.
+Es sind Wege solche Daten von Personen zu trennen, um sie nicht zu belasten.
 
 \begin{definition}[Anonymisierung]
 
 \enquote{Anonymisierung ermöglicht es, den Personenbezug von Daten zu entfernen. 
-Anonymisierte Daten können nicht mehr oder nur sehr eingeschränkt auf einzelne Personen bezogen werden.} (\cite{Dewes2022})
-
-%Bei der Anonymisierung wird ein Name entfernt und stattdessen eine Bezeichnung wie \enquote{Schüler 1} verwendet, die man der Person nicht zuordnen kann.
+Anonymisierte Daten können nicht mehr oder nur sehr eingeschränkt auf einzelne Personen bezogen werden.} 
+(S.183, \cite{Dewes2022})
 
 \end{definition}
 
 \begin{definition}[Pseudonymisierung]
 
-\enquote{Pseudonymisierung verfolgt im Gegensatz zur Anonymisierung nicht das Ziel, den 
-Personenbezug von Daten komplett zu entfernen, sondern soll vielmehr die Zuordnung 
-einzelner Datensätze zu spezifischen Personen über technische und organisatorische Maß
-nahmen einschränken und kontrollierbar machen.} (\cite{Dewes2022})
-
-%Bei der Pseudonymisierung wird der Name einer Person durch einen anderen Namen ersetzt.
+\enquote{Pseudonymisierung verfolgt im Gegensatz zur Anonymisierung nicht das Ziel, den Personenbezug von Daten komplett zu entfernen, sondern soll vielmehr die Zuordnung einzelner Datensätze zu spezifischen Personen über technische und organisatorische Maßnahmen einschränken und kontrollierbar machen.} 
+(S.184, \cite{Dewes2022})
 
 \end{definition}
 

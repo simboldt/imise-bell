@@ -2,17 +2,18 @@
 \chapter{Lösungsansatz}\label{ch:approach}
 %*****************************************
 
-Diese Arbeit verfolgt das Ziel das Question Answering mittels \ac{rag} auf Basis eines Transkripts von Vorlesungsaufnahmen vorzubereiten.
-Als erstes müssen dafür die Vorlesungen transkribiert werden.
+Diese Arbeit verfolgt das Ziel das Question Answering mittels \ac{rag} auf Basis von Vorlesungsaufnahmen vorzubereiten.
+Dafür müssen die Vorlesungen transkribiert werden.
 
-\section{Transkription}
-
-\subsection{Inhalt der Vorlesungen}
-Eine Vorlesung besteht in der Regel aus einer Doppelstunde von 90 Minuten.
+\section{Inhalt der Vorlesungen}
+Hier werden die Vorlesungen aus dem Modul \enquote{Architektur von Informationssystemen im Gesundheitswesen} des Studiengangs Medizininformatik behandelt.
+Sie wurden im Sommersemester 2021 von Prof. Dr. Alfred Winter gehalten.
+Eine Vorlesung bestand in der Regel aus einer Doppelstunde von 90 Minuten.
 Meistens wurden gleich zwei Vorlesungen in Einheiten von etwa drei Stunden gehalten.
 So ergeben sich 12 Aufzeichnungen mit insgesamt 22 Vorlesungen und einer Gesamtlänge von 32 Stunden und fünf Minuten. 
-Der Inhalt dieser Vorlesungen basiert auf \cite{bb2}. % Dieses Buch behandelt ... %Hier noch HIS, Inhalt des Buchs beschreiben
-Die Zuordnung der Kapitel des Buchs zu den Vorlesungen ist in \cref{tab:vorlesungen} dargestellt.
+Der Inhalt dieser Vorlesungen basiert auf dem Buch \enquote{Health Information Systems: Architectures and Strategies} von \cite{bb2}.
+\ac{his} dienen der Verwaltung und Kommunikation von Patientendaten und medizinischem Wissen.
+Die Zuordnung der Kapitel des Buchs zu den jeweiligen Vorlesungen ist in \cref{tab:vorlesungen} dargestellt.
 
 \begin{table}
 \begin{tabulary}{\textwidth}{lLll}
@@ -56,16 +57,23 @@ Die Zuordnung der Kapitel des Buchs zu den Vorlesungen ist in \cref{tab:vorlesun
 \label{tab:vorlesungen}
 \end{table}
 
-\subsection{Methode}
-Die Transkription soll ein \ac{llm} verwendet werden.
-%Spart enorm Zeit, ist sogar genauer als transkription per Hand (Paper als Quelle)
-Aufgrund seiner hohen Genauigkeit, wurde OpenAI Whisper als Transkriptionsmodell ausgewählt.
-Insbesondere beim Umgang mit Fachsprache übertrifft Whisper andere Modelle.
-Da in den Vorlesungen vor allem fachliche Inhalte thematisiert werden ist diese Eigenschaft besonders wichtig.
-Aus den verschiedenen Whisper Modellen wurde Whisper turbo ausgewählt, weil es eines der genausten und gleichzeitig schnellsten ist.
-%Jetz noch noScribe (ausgewählt weil open source, whisper turbo voreingestellt)
-%RAG (cite\hallucination)
-%warum exemplarisch ok ist
+\section{Methode}
+Für die Transkription der Vorlesungen soll ein \ac{llm} verwendet werden.
+Im Vergleich zum manuellen Abschreiben spart diese Methode sehr viel Zeit.
+
+\subsection{Transkriptionsmodell}
+In in Vorlesungen wird viel Fachsprache verwendet.
+Aufgrund seiner hohen Genauigkeit beim Umgang mit Fachbegriffen wird hier OpenAI Whisper als Transkriptionsmodell genutzt.
+Aus den verschiedenen Whisper-Modellen wird Whisper turbo ausgewählt, weil es eines der genauesten und gleichzeitig schnellsten Whisper-Modelle ist.
+
+\subsection{Anwendung}
+Für die Umsetzung der Transkription wird die Software noScribe verwendet.
+Sie erleichtert den Einsatz von Whisper, indem sie eine übersichtliche Benutzeroberfläche zur Bedienung bereitstellt.
+Zudem ist die ausgewählte Version von Whisper, Whisper turbo, bereits voreingestellt und muss nicht zusätzlich installiert werden.
+Als Open Source Software kann noScribe unbegrenzt kostenlos verwendet werden und seine Funktionsweise ist transparent.
+Das Programm lässt sich vollständig lokal ausführen
+Das ist notwendig, da externe Anbieter in der Regel nicht die benötigte Rechenleistung bereitstellen, welche hier, aufgrund der Größe der verwendeten Audiodateien, sehr hoch ist.
+Der Prozess lässt sich zudem durch die Verwendung von CUDU beschleunigen.
 
 %~~~~~~~~~~Scheitern von OpenAI API~~~~~~~~~~~~~~~
 %https://platform.openai.com/docs/guides/speech-to-text
@@ -76,3 +84,15 @@ Aus den verschiedenen Whisper Modellen wurde Whisper turbo ausgewählt, weil es 
 
 %Sehr geringes limit mit der API
 %Fehler: openai.RateLimitError: Error code: 429
+
+\subsection{Überarbeitung}
+Nach Fertigstellung der Transkription mit noScribe muss das Transkript noch manuell überarbeitet werden.
+Dabei sollen inhaltliche Fehler korrigiert und unwichtige Abschnitte entfernt oder gekürzt werden.
+Des Weiteren müssen personenbezogene Informationen entfernt werden, um die Datenschutzbestimmungen nicht zu verletzen.
+Die Namen der Studierenden sollen dafür durch Einsetzen von \enquote{Student X} anonymisiert werden.
+Es wird Anonymisierung und nicht Pseudonymisierung verwendet, weil es für das fachliche Verständnis des Transkripts irrelevant ist, dass man zwischen verschiedenen Studierenden unterscheiden kann.
+Letztlich ist zu erwarten, dass in den Vorlesungen Zugangsdaten für beschränkte Lehrmaterialien enthalten sind, welche geheim bleiben müssen und daher auch entfernt werden müssen.
+Da die Überarbeitung viel Zeit in Anspruch nimmt wird sie nur exemplarisch, für einen Teil des Transkripts, durchgeführt.
+
+
+%RAG (cite\hallucination)

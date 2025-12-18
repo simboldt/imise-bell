@@ -2,12 +2,35 @@
 \chapter{Ergebnisse}\label{ch:results}
 %*****************************************
 
-Laut der Programmbeschreibung von noScribe dauert die Transkription zwei bis fünf Mal länger als die Audio.
-Durch die Beschleunigung mit CUDA war die Transkription stattdessen im Durchschnitt fünf Mal schneller.
-Das ausgegebene Transkript umfasst etwa 167.000 Wörter.
+Die Transkription mit Whisper wurde für die ausgewählten Vorlesungen aus dem Modul \enquote{Architektur von Informationssystemen im Gesundheitswesen} erfolgreich durchgeführt
+Dabei insgesamt 32 Stunden und fünf Minuten an Tonmaterial innerhalb von etwa sechs Stunden in Textform transkribiert.
+Dieser Vorgang dauerte somit nur etwa ein Fünftel der Gesamtlänge der Vorlesungen.
+Als Ergebnis liegt ein Transkript von knapp 170.000 Wörtern Umfang vor.
+Die manuelle Überarbeitung dieses Transkripts erfolgte beispielhaft für die Vorlesung \enquote{Information System Basics} (Nr.3).
+Dieser Teil befindet sich im Anhang und ist jetzt für \ac{qa} mittels \ac{rag} nutzbar.
 
-Erstes Ziel erreicht (A4 5 6 nur exemplarisch)
+\section{Einschränkungen}
 
-Zweites Ziel vorbereitet 
+Die erste Einschränkung liegt in der Genauigkeit des Transkripts.
+Kompliziertes Vokabular wie zum Beispiel spezifische Fachbegriffe, Eigennahmen oder Abkürzungen werden nicht immer korrekt erkannt und dadurch Falsch wiedergegeben.
+Das liegt daran, dass solche Ausdrücke nicht in den Trainingsdaten der meisten \acp{llm} enthalten sind und Schreib- und Sprechweise teilweise nicht übereinstimmen.
+Zudem können, ähnlich wie bei einem menschlichen Transkribierer, auch bei der Transkription mit einem \ac{llm} undeutliche Aussprachen zu Fehler führen.
+Durch eine Korrektur durch einen Menschen mit Fachkenntnissen lassen sich Transkriptionsfehler jedoch größtenteils beheben.
+Weitere Einschränkungen bestehen jedoch auch bei einer vollständig korrekten Transkription.
+Wenn sich ein Sprecher auf Inhalte in einer Präsentation bezieht, kann er annehmen, dass die Teilnehmer der Vorlesung die Bildquelle sehen.
+Dadurch, dass nur das Audiomaterial der Vorlesungen berücksichtigt wird geht dann ein Teil der Informationen verloren.
+Außerdem ist die Sprechweise in einer Vorlesung oftmals etwas umgangssprachlich und enthält Füllwörter und Abschweifungen.
+Dadurch sind die Inhalte für einen menschlichen Zuhörer anschaulicher, allerdings wird das Gesagte in Schriftform schnell unübersichtlich.
+Zudem passieren mündlich gelegentlich Versprecher, welche den Inhalt verfälschen können.
+Es ist zu erwarten, dass dadurch \ac{qa} auf Basis des Transkripts leicht beeinträchtigt wird.
 
-Insgesamt: Methode vorgestellt
+
+\section{Fazit}
+
+Aufnahmen von Studienvorlesungen enthalten ein bisher schwer zugängliches und daher wenig genutztes Wissenspotenzial.
+Mit dieser Arbeit wird eine Methode vorgestellt, mit der dieses Wissen effizient durch Nutzung von \acp{llm} erschlossen werden kann.
+Die Methode ist ohne spezifische Anpassungen auf jegliche Audio- und auch auf Videoaufnahmen übertragbar,
+Dadurch kann sie analog bei Aufnahmen anderer Themenbereiche angewendet werden.
+
+%(Vergleich mit Programmbeschreibung, 2-5 mal langsamer, beschleunigt durch CUDA) 
+%- Genauigkeit: noch zu ermitteln

@@ -12,8 +12,8 @@
 
 Die Transkription der Vorlesungen (\cref{tab:vorlesungen}) mit noScribe erfolgt auf einem leistungsfähigen Rechner des Instituts, welcher mit einer Nvidia GeForce RTX 3090 Grafikkarte, einem Intel core i7-9700KF Prozessor und 32 GB Arbeitsspeicher ausgestattet ist.
 Die Grafikkarte ermöglicht die Verwendung der schnelleren CUDA-Variante von noScribe. 
-Die Audiodateien werden einzeln transkribiert, weil sonst die RAM Kapazität überschritten wird, was zu Abstürzen führt.
-Dabei Belegung der Parameter erfolgt dabei wie in \cref{tab:transkription_einstellungen} gezeigt ist.
+Die Audiodateien werden einzeln transkribiert, da sonst die RAM-Kapazität überschritten wird, was zu Abstürzen führt.
+Die Belegung der Parameter wird in \cref{tab:transkription_einstellungen} beschrieben.
 
 
 \begin{table}
@@ -24,7 +24,7 @@ Dabei Belegung der Parameter erfolgt dabei wie in \cref{tab:transkription_einste
         \midrule
         Start/Stop & Festlegung der gewünschten Start- und Endzeitpunkte & --- \\
         Language & Angabe der Sprache der Audio & German \\
-        Model & Auswahl des Transkriptionsmodells. Voreingestellt sind "Precise" (Whisper large-v3-turbo) und "Fast" (Whisper large-v3-turbo 8-Bit-quantisiert). Es lassen sich aber auch andere Modelle hinzufügen & Precise \\
+        Model & Auswahl des Transkriptionsmodells. Voreingestellt sind \enquote{Precise} (Whisper large-v3-turbo) und \enquote{Fast} (Whisper large-v3-turbo 8-Bit-quantisiert). Es lassen sich aber auch andere Modelle hinzufügen & Precise \\
         Mark pause & Gibt Sprechpausen an & Aus \\
         Speaker detection & Unterscheidet zwischen verschiedenen Sprechern & Ein \\
         Overlapping speech & Kennzeichnet gleichzeitiges Sprechen & Aus \\
@@ -39,11 +39,11 @@ Dabei Belegung der Parameter erfolgt dabei wie in \cref{tab:transkription_einste
 
 
 \subsection{Manuelle Überarbeitung}
-Die Schritte der Korrektur, und Anonymisierung werden für einen ausgewählten Teil des Transkripts manuell durchgeführt.
+Die Schritte der Korrektur und Anonymisierung werden für einen ausgewählten Teil des Transkripts manuell durchgeführt.
 Dieser Teil soll beispielhaft als Basis für das Question Answering genutzt werden.
-Als Beispiel wurde das Transkript der Vorlesung zum dritten Kapitel (Information System Basics) ausgewählt.
+Als Beispiel wird das Transkript der Vorlesung zum dritten Kapitel (Information System Basics) ausgewählt.
 Dieses liegt einzeln vor, da die dazugehörige Vorlesung nur dieses eine Kapitel behandelt hat, während andere Vorlesungen teilweise mehrere Kapitel zusammengefasst haben.
-Dieses Kapitel eignet sich auch inhaltlich gut, da es noch eher grundlegende Themen behandelt, was das Korrigieren des Textes erleichtert.
+Dieses Kapitel eignet sich auch inhaltlich gut, da es eher grundlegende Themen behandelt, was das Korrigieren des Textes erleichtert.
 
 %Kap 1 unkonkrete Themen, schwierig trennung bei zsm gefassten Vorlesungen zu finden
 
